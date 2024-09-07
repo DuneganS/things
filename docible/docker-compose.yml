@@ -1,0 +1,19 @@
+
+services:
+  ansible-controller:
+    image: docible
+    container_name: ansible-controller
+    volumes:
+      - ./ansible.cfg:/etc/ansible/ansible.cfg
+      - ./ansible:/ansible
+
+  ansible-target1:
+    image: docible
+    container_name: ansible-target1
+  ansible-target2:
+    image: docible
+    container_name: ansible-target2
+
+networks:
+  ansible-network:
+    driver: bridge
