@@ -2,7 +2,7 @@
 
 ## Building the image
 
-`docker build -t fedora-ansible-ssh .`
+`docker build -t docible .`
 
 ## Starting the containers
 
