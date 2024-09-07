@@ -1,5 +1,5 @@
 ---
-- name: Distribute SSH key and ping target nodes
+- name: Distribute SSH key to all targets
   hosts: all
   become: true
   vars:
@@ -10,5 +10,3 @@
         user: "{{ ansible_user | default('root') }}"
         state: present
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-    - name: Ping all hosts
-      ping:

@@ -14,9 +14,15 @@
 
 ## Usage
 
-To test that we can connect to our targets we will run a playbook that will add our SSH key to targets and then ping
+For a simple test we can do the following:
 
-- Run `docker exec -it ansible-controller ansible-playbook playbooks/ping_targets.yml`
-  - (Optional) You can connect to the container to run the playbook
-    - `docker exec -it ansible-controller sh`
-    - `ansible-playbook playbooks/ping_targets.yml`
+1. `docker exec -it ansible-controller ansible all -m ping` - Will check that the targets are unreachable
+2. `docker exec -it ansible-controller ansible-playbook playbooks/add_ssh_key.yml` - Adds our SSH key to the targets
+3. `docker exec -it ansible-controller ansible all -m ping` - Will check that the targets are reachable
+
+If you want to connect to the controller to run the commands directly you can follow these steps:
+
+1. `docker exec -it ansible-controller sh`
+2. `ansible all -m ping`
+3. `ansible-playbook playbooks/add_ssh_key.yml`
+4. `ansible all -m ping`
